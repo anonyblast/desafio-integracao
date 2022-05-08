@@ -1,4 +1,4 @@
 const Sequelize = require('sequelize');
-const db_mysql = new Sequelize('mysql://root:root@localhost:3306/');
+const db_mysql = new Sequelize('desafio', 'olivgu01', 'Ebyeavnq16', {dialect: 'mysql', host: 'localhost'});
 
 module.exports = db_mysql;
