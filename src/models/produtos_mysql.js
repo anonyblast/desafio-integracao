@@ -15,11 +15,11 @@ const Produto = db_mysql.define('produtos', {
         }
     },
     codigo: {
-        type: Sequelize.VARCHAR,
+        type: Sequelize.STRING,
         allowNull: false
     },
     nome: {
-        type: Sequelize.VARCHAR,
+        type: Sequelize.STRING,
         allowNull: false
     },
     descricao: {

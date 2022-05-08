@@ -8,11 +8,11 @@ const Categoria = db_myql.define('categorias', {
         autoIncrement: true
     },
     codigo: {
-        type: Sequelize.VARCHAR,
+        type: Sequelize.STRING,
         allowNull: false
     },
     titulo: {
-        type: Sequelize.VARCHAR,
+        type: Sequelize.STRING,
         allowNull: false
     },
     status: { // 0 - Inativo, 1 - Ativo
