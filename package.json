@@ -2,9 +2,28 @@
   "devDependencies": {
     "express": "^4.18.1",
     "mysql2": "^2.3.3",
-    "node-cron": "^3.0.0"
+    "node-cron": "^3.0.0",
+    "nodemon": "^2.0.16"
   },
   "dependencies": {
     "sequelize": "^6.19.0"
-  }
+  },
+  "name": "multiplier_challenge",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anonyblast/desafio-integracao.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anonyblast/desafio-integracao/issues"
+  },
+  "homepage": "https://github.com/anonyblast/desafio-integracao#readme"
 }
