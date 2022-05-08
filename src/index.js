@@ -2,6 +2,7 @@
     const db_myql = require('./database/db_mysql');
     const Produto = require('./models/produtos_mysql');
     const Categoria = require('./models/categorias_mysql');
+    const Estoque = require('./models/estoque_mysql');
 
     try {
         const result = await db_myql.sync({ force: true });
@@ -25,6 +26,11 @@
         descricao: 'Descrição do produto 1',
         valor: 10.00,
         status: 1
+    });
+
+    const estoqueCreate = await Estoque.create({
+        idProdutos: resultCreate.id,
+        quantidade: 10
     });
 
     console.log(resultCreate);

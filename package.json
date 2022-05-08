@@ -15,7 +15,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/controllers/api_categorias.js"
+    "start": "nodemon src/controllers/api_categorias.js",
+    "dev" : "nodemon src/controllers/api_produtos.js"
   },
   "repository": {
     "type": "git",
