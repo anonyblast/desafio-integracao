@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
-const db_pgsql = new Sequelize('desafio', 'olivgu01', 'Ebyeavnq16', {dialect: 'postgres', host: 'localhost'});
+const config = require('../config/config');
+const db_pgsql = new Sequelize(config.database, config.user, config.pw, {dialect: 'postgres', host: 'localhost'});
 
 module.exports = db_pgsql;
