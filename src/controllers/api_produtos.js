@@ -75,7 +75,7 @@ app.post("/produtos", async (req, res) => {
             status: status,
           });
           Estoque.create({
-            idProduto: Produto.id,
+            idProduto: produto.id,
             status: status,
             reserva: 0,
             quantidade: 0,
