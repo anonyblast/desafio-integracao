@@ -1,9 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = 3000;
-const db_mysql = require("../database/db_mysql");
 const Categoria = require("../models/categorias_mysql");
-const config = require("../config/config");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -22,9 +20,9 @@ app.get("/categorias", (req, res) => {
 });
 
 app.get("/categorias/:id", async (req, res) => {
-  const CategoriasID = req.params.id;
+  const { id } = req.params;
 
-  await Categoria.findByPk(parseInt(CategoriasID))
+  await Categoria.findByPk(parseInt(id))
     .then((categoria) => {
       if (categoria) {
         return res.status(200).json(categoria);
@@ -69,6 +67,70 @@ app.post("/categorias", async (req, res) => {
         });
         return res.status(201).send({
           message: "Categoria criada com sucesso",
+        });
+      }
+    })
+    .catch((error) => {
+      return res.status(500).send({
+        error: error,
+      });
+    });
+});
+
+app.patch("/categorias/:id", async (req, res) => {
+  const { id } = req.params;
+  const { codigo, titulo, status } = req.body;
+  await Categoria.findByPk(parseInt(id))
+    .then((categoria) => {
+      if (categoria) {
+        if (codigo) {
+          if (codigo.toUpperCase().substring(0, 4) !== "CAT-") {
+            return res.status(400).send({
+              error: "Código inválido (deve iniciar com CAT-)",
+            });
+          }
+          categoria.codigo = codigo;
+        }
+        if (titulo) {
+          categoria.titulo = titulo;
+        }
+        if (status) {
+          if (!(status in [0, 1])) {
+            return res.status(400).send({
+              error: "Status inválido",
+            });
+          }
+          categoria.status = status;
+        }
+        categoria.save();
+        return res.status(200).send({
+          message: "Categoria atualizada com sucesso",
+        });
+      } else {
+        return res.status(404).send({
+          error: "Categoria não encontrada",
+        });
+      }
+    })
+    .catch((error) => {
+      return res.status(500).send({
+        error: error,
+      });
+    });
+});
+
+app.delete("/categorias/:id", async (req, res) => {
+  const { id } = req.params;
+  await Categoria.findByPk(parseInt(id))
+    .then((categoria) => {
+      if (categoria) {
+        categoria.destroy();
+        return res.status(200).send({
+          message: "Categoria excluída com sucesso",
+        });
+      } else {
+        return res.status(404).send({
+          error: "Categoria não encontrada",
         });
       }
     })
