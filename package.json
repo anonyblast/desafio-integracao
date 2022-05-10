@@ -2,11 +2,10 @@
   "devDependencies": {
     "express": "^4.18.1",
     "mysql2": "^2.3.3",
-    "node-cron": "^3.0.0",
     "nodemon": "^2.0.16"
   },
   "dependencies": {
-    "@types/sequelize": "^4.28.12",
+    "require-dir": "^1.2.0",
     "sequelize": "^6.19.0"
   },
   "name": "multiplier_challenge",
@@ -15,17 +14,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cat": "nodemon src/controllers/api_categorias.js",
-    "pro" : "nodemon src/controllers/api_produtos.js",
-    "est" : "nodemon src/controllers/api_estoque.js"
+    "start" : "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anonyblast/desafio-integracao.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["sequelize", "multiplier", "challenge", "desafio", "integracao"],
+  "author": "Gustavo Iafelix",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/anonyblast/desafio-integracao/issues"
   },
