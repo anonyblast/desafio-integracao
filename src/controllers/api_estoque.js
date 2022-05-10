@@ -1,25 +1,21 @@
 const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 4000;
+const router = express.Router();
 const Estoque = require("../models/estoque_mysql");
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// router.get("/", (req, res) => {
+//   Estoque.findAll()
+//     .then((estoque) => {
+//       res.status(200).json(estoque);
+//       console.log(estoque);
+//     })
+//     .catch((error) => {
+//       res.status(500).send({
+//         error: error,
+//       });
+//     });
+// });
 
-app.get("/estoque", (req, res) => {
-  Estoque.findAll()
-    .then((estoque) => {
-      res.status(200).json(estoque);
-      console.log(estoque);
-    })
-    .catch((error) => {
-      res.status(500).send({
-        error: error,
-      });
-    });
-});
-
-app.get("/produtos/:id/estoque", (req, res) => {
+router.get("/:id/estoque", (req, res) => {
   const { id } = req.params;
   Estoque.findOne({
     where: {
@@ -43,7 +39,7 @@ app.get("/produtos/:id/estoque", (req, res) => {
     });
 });
 
-app.patch("/produtos/:id/estoque", (req, res) => {
+router.patch("/:id/estoque", (req, res) => {
   const { id } = req.params;
   const { quantidade, reserva, status } = req.body;
   Estoque.findOne({
@@ -76,7 +72,7 @@ app.patch("/produtos/:id/estoque", (req, res) => {
     });
 });
 
-app.delete("/produtos/:id/estoque", (req, res) => {
+router.delete("/:id/estoque", (req, res) => {
   const { id } = req.params;
   Estoque.findOne({
     where: {
@@ -101,6 +97,4 @@ app.delete("/produtos/:id/estoque", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-  console.log(`Running in http://localhost:${PORT}`);
-});
+module.exports = router;

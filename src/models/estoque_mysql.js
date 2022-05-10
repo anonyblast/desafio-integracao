@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db_myql = require('../database/db_mysql');
 
-const Estoque = db_myql.define('estoque', {
+const Estoque = db_myql.define('estoques', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,

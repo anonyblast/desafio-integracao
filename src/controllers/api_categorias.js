@@ -1,12 +1,8 @@
 const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 3000;
+const router = express.Router();
 const Categoria = require("../models/categorias_mysql");
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.get("/categorias", (req, res) => {
+router.get("/", (req, res) => {
   Categoria.findAll()
     .then((categorias) => {
       res.status(200).json(categorias);
@@ -19,7 +15,7 @@ app.get("/categorias", (req, res) => {
     });
 });
 
-app.get("/categorias/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
 
   await Categoria.findByPk(parseInt(id))
@@ -39,7 +35,7 @@ app.get("/categorias/:id", async (req, res) => {
     });
 });
 
-app.post("/categorias", async (req, res) => {
+router.post("/", async (req, res) => {
   const { codigo, titulo, status } = req.body;
   await Categoria.findOne({
     where: {
@@ -77,7 +73,7 @@ app.post("/categorias", async (req, res) => {
     });
 });
 
-app.patch("/categorias/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
   const { id } = req.params;
   const { codigo, titulo, status } = req.body;
   await Categoria.findByPk(parseInt(id))
@@ -119,7 +115,7 @@ app.patch("/categorias/:id", async (req, res) => {
     });
 });
 
-app.delete("/categorias/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   await Categoria.findByPk(parseInt(id))
     .then((categoria) => {
@@ -141,6 +137,4 @@ app.delete("/categorias/:id", async (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-  console.log(`Running in http://localhost:${PORT}`);
-});
+module.exports = router;

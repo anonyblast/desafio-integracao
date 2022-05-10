@@ -7,7 +7,7 @@ const Produto = db_mysql.define('produtos', {
         primaryKey: true,
         autoIncrement: true
     },
-    idCategorias: {
+    idCategoria: {
         type: Sequelize.INTEGER,
         references: {
             model: 'categorias',
