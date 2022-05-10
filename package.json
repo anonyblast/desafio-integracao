@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@types/sequelize": "^4.28.12",
+    "require-dir": "^1.2.0",
     "sequelize": "^6.19.0"
   },
   "name": "multiplier_challenge",
@@ -15,9 +16,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cat": "nodemon src/controllers/api_categorias.js",
-    "pro" : "nodemon src/controllers/api_produtos.js",
-    "est" : "nodemon src/controllers/api_estoque.js"
+    "start" : "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
