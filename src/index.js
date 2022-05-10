@@ -1,5 +1,5 @@
-// Executar todas as apis da aplicação que estão na pasta /controllers
-const requireDir = require("require-dir");
+const requireDir = require('require-dir');
+const apis = requireDir('./controllers');
 
-const apis = requireDir("./controllers");
+// Executar todas as rotas
 console.log(apis);

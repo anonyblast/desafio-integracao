@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
-const Produto = require("../models/produtos_mysql");
-const Categoria = require("../models/categorias_mysql");
-const Estoque = require("../models/estoque_mysql");
+const Produto = require("../models/mysql/produtos_mysql");
+const Categoria = require("../models/mysql/categorias_mysql");
+const Estoque = require("../models/mysql/estoque_mysql");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

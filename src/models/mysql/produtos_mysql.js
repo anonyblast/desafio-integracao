@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db_mysql = require('../database/db_mysql');
+const db_mysql = require('../../database/db_mysql');
 
 const Produto = db_mysql.define('produtos', {
     id: {

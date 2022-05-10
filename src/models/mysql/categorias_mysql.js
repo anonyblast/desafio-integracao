@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db_myql = require('../database/db_mysql');
+const db_myql = require('../../database/db_mysql');
 
 const Categoria = db_myql.define('categorias', {
     id: {

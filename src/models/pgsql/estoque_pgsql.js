@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const db_myql = require('../database/db_mysql');
+const db_pgsql = require('../../database/db_pgsql');
 
-const Estoque = db_myql.define('estoque', {
+const Estoque = db_pgsql.define('estoque', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -9,10 +9,7 @@ const Estoque = db_myql.define('estoque', {
     },
     idProduto: {
         type: Sequelize.INTEGER,
-        references: {
-            model: 'produtos',
-            key: 'id'
-        }
+        allowNull: false
     },
     quantidade: {
         type: Sequelize.INTEGER,

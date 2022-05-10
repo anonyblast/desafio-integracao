@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
-const Categoria = require("../models/categorias_mysql");
+const Categoria = require("../models/mysql/categorias_mysql");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
