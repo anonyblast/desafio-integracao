@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = 3030;
+const PORT = process.env.PORT || 4000;
 const Estoque = require("../models/estoque_mysql");
 
 app.use(express.json());
@@ -102,5 +102,5 @@ app.delete("/produtos/:id/estoque", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Running in http://localhost:${PORT}`);
 });
