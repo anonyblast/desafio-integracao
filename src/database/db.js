@@ -8,7 +8,7 @@
  
     try {
         const resultado = await database.sync();
-        console.log(blue + "++++++ Database synced successfully ++++++" + reset);
+        console.log(blue + "++++++ Base de Dados conectada com sucesso ++++++" + reset);
     } catch (error) {
         console.log(error);
     }
